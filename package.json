@@ -1,0 +1,22 @@
+{
+  "name": "gtav-client",
+  "version": "1.0.0",
+  "description": "VaorraNET GTAV Client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vaorra/GTAV-Client.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vaorra/GTAV-Client/issues"
+  },
+  "homepage": "https://github.com/Vaorra/GTAV-Client#readme",
+  "devDependencies": {
+    "@types/ragemp-c": "github:CocaColaBear/types-ragemp-c#master"
+  }
+}
