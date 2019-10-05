@@ -18,5 +18,8 @@
   "homepage": "https://github.com/Vaorra/GTAV-Client#readme",
   "devDependencies": {
     "@types/ragemp-c": "github:CocaColaBear/types-ragemp-c#master"
+  },
+  "dependencies": {
+    "rage-rpc": "^0.3.0"
   }
 }
