@@ -5,14 +5,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <script type="text/javascript" src="assets/rage-rpc.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/main.css" type="text/css" />
 
         <title>LobbyUI</title>
-        <script src="assets/generateLobbies.js"></script>
-        <script src="assets/setLobby.js"></script>
     </head>
 
     <body>
@@ -33,21 +30,16 @@
 
             <div class="row">
 
-                <!-- joined lobby -->
-                <div class="col-4">
-                    <h1 class="text-center mb-3" id="joined-lobby">your lobby</h1>
-                    <h4>Status: </h4><span id="joined-status"></span>
-                </div>
-
                 <!-- online lobbies -->
-                <div class="col-8">
+                <div class="col-12">
                     <h1 class="text-center mb-3">online lobbies</h1>
 
                     <table class="table" id="table">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>GameMode</th>
-                                <th>Status</th>
+                                <th>Running</th>
                                 <th>Players</th>
                                 <th></th>
                             </tr>
@@ -70,6 +62,24 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="assets/closeLobbyUI.js"></script>
+        <script src="assets/buttons.js"></script>
+        <script>
+            function setLobby(id, gameMode, running, participants, button) {
+                var table = document.getElementById("lobbies");
+                var row = table.insertRow(0);
+                var idCell = row.insertCell(0);
+                var gamemodeCell = row.insertCell(1);
+                var runningCell = row.insertCell(2);
+                var participantsCell = row.insertCell(3);
+                var buttonCell = row.insertCell(4);
+
+                idCell.innerHTML = id;
+                gamemodeCell.innerHTML = gameMode;
+                runningCell.innerHTML = running;
+                participantsCell.innerHTML = participants;
+                buttonCell.innerHTML = button;
+            }
+        </script>
     </body>
 
 </html>

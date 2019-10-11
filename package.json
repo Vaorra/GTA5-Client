@@ -20,6 +20,5 @@
     "@types/ragemp-c": "github:CocaColaBear/types-ragemp-c#master"
   },
   "dependencies": {
-    "rage-rpc": "^0.3.0"
   }
 }
