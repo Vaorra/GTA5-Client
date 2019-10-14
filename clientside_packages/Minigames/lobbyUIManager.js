@@ -2,36 +2,43 @@
 var lobbyUI = null;
 var updateInterval = null;
 var playerData = null;
-mp.events.add("receiveLobbyData", function (lobbies) {
-    lobbyUI.execute("$('#lobbies tr').remove();");
-    for (var _i = 0, lobbies_1 = lobbies; _i < lobbies_1.length; _i++) {
-        var lobby = lobbies_1[_i];
-        var participantsString = "";
-        for (var _a = 0, _b = lobby.participants; _a < _b.length; _a++) {
-            var participant = _b[_a];
-            if (participant.ready) {
-                participantsString = participantsString + " " + participant.name + " (<span class=\"text-success\">Ready</span>)<br>";
+var lobbyVersions = {};
+mp.events.add("receiveLobbyData", function (lobby) {
+    var participantsString = "";
+    for (var _i = 0, _a = lobby.participants; _i < _a.length; _i++) {
+        var participant = _a[_i];
+        if (participant.ready) {
+            participantsString = participantsString + " " + participant.name + " (<span class=\"text-success\">Ready</span>)<br>";
+        }
+        else {
+            participantsString = participantsString + " " + participant.name + " (<span class=\"text-warning\">not Ready</span>)<br>";
+        }
+    }
+    if (playerData !== null) {
+        if (playerData.lobbyId === null) {
+            if (lobby.running) {
+                lobbyUI.execute("updateLobby('" + lobby.id + "', '" + lobby.gameMode + "', '" + lobby.running + "', '" + participantsString + "', '');");
             }
             else {
-                participantsString = participantsString + " " + participant.name + " (<span class=\"text-warning\">not Ready</span>)<br>";
+                lobbyUI.execute("updateLobby('" + lobby.id + "', '" + lobby.gameMode + "', '" + lobby.running + "', '" + participantsString + "', '<button onclick=\"joinLobby(this)\" type=\"button\" class=\"btn btn-success btn-sm\">Join</button>');");
             }
         }
-        if (playerData !== null) {
-            if (playerData.lobbyId === null) {
-                lobbyUI.execute("setLobby('" + lobby.id + "', '" + lobby.gameMode + "', '" + lobby.running + "', '" + participantsString + "', '<button onclick=\"joinLobby(this)\" type=\"button\" class=\"btn btn-success btn-sm\">Join</button>');");
-            }
-            else {
-                if (playerData.lobbyId === lobby.id) {
-                    if (playerData.isReady) {
-                        lobbyUI.execute("setLobby('" + lobby.id + "', '" + lobby.gameMode + "', '" + lobby.running + "', '" + participantsString + "', '<button onclick=\"leaveLobby(this)\" type=\"button\" class=\"btn btn-danger btn-sm mr-2\">Leave</button><button onclick=\"makeNotReady(this)\" type=\"button\" class=\"btn btn-danger btn-sm\">not Ready</button>');");
-                    }
-                    else {
-                        lobbyUI.execute("setLobby('" + lobby.id + "', '" + lobby.gameMode + "', '" + lobby.running + "', '" + participantsString + "', '<button onclick=\"leaveLobby(this)\" type=\"button\" class=\"btn btn-danger btn-sm mr-2\">Leave</button><button onclick=\"makeReady(this)\" type=\"button\" class=\"btn btn-success btn-sm\">Ready</button>');");
-                    }
+        else {
+            if (playerData.lobbyId === lobby.id) {
+                if (lobby.running) {
+                    lobbyUI.execute("updateLobby('" + lobby.id + "', '" + lobby.gameMode + "', '" + lobby.running + "', '" + participantsString + "', '');");
                 }
                 else {
-                    lobbyUI.execute("setLobby('" + lobby.id + "', '" + lobby.gameMode + "', '" + lobby.running + "', '" + participantsString + "', '');");
+                    if (playerData.isReady) {
+                        lobbyUI.execute("updateLobby('" + lobby.id + "', '" + lobby.gameMode + "', '" + lobby.running + "', '" + participantsString + "', '<button onclick=\"leaveLobby(this)\" type=\"button\" class=\"btn btn-danger btn-sm mr-2\">Leave</button><button onclick=\"makeNotReady(this)\" type=\"button\" class=\"btn btn-danger btn-sm\">not Ready</button>');");
+                    }
+                    else {
+                        lobbyUI.execute("updateLobby('" + lobby.id + "', '" + lobby.gameMode + "', '" + lobby.running + "', '" + participantsString + "', '<button onclick=\"leaveLobby(this)\" type=\"button\" class=\"btn btn-danger btn-sm mr-2\">Leave</button><button onclick=\"makeReady(this)\" type=\"button\" class=\"btn btn-success btn-sm\">Ready</button>');");
+                    }
                 }
+            }
+            else {
+                lobbyUI.execute("updateLobby('" + lobby.id + "', '" + lobby.gameMode + "', '" + lobby.running + "', '" + participantsString + "', '');");
             }
         }
     }
@@ -39,20 +46,31 @@ mp.events.add("receiveLobbyData", function (lobbies) {
 mp.events.add("receivePlayerData", function (playerDataEvent) {
     playerData = playerDataEvent;
 });
+mp.events.add("receiveLobbyVersions", function (lobbyVersionEvent) {
+    lobbyVersionEvent.forEach(function (lobbyInfo) {
+        if (lobbyInfo.lobbyVersion !== lobbyVersions[lobbyInfo.lobbyId]) {
+            lobbyVersions[lobbyInfo.lobbyId] = lobbyInfo.lobbyVersion;
+            mp.events.callRemote("requestLobbyData", lobbyInfo.lobbyId);
+        }
+    });
+});
 mp.keys.bind(0x4C, true, function () {
     if (!mp.gui.cursor.visible) {
         lobbyUI = mp.browsers.new("package://websites/lobbyui/lobbyui.html");
         mp.gui.cursor.show(true, true);
         updateInterval = setInterval(function () {
-            mp.events.callRemote("requestLobbyData");
             mp.events.callRemote("requestPlayerData");
+            mp.events.callRemote("requestLobbyVersions");
         }, 200);
     }
 });
 mp.events.add("closeLobbyUI", function () {
     clearInterval(updateInterval);
-    mp.browsers.at(0).destroy();
-    mp.gui.cursor.show(false, false);
+    setTimeout(function () {
+        mp.browsers.at(0).destroy();
+        mp.gui.cursor.show(false, false);
+        lobbyVersions = {};
+    }, 250);
 });
 mp.events.add("joinLobbyButtonEvent", function (lobbyId) {
     mp.events.callRemote("joinLobby", parseInt(lobbyId));

@@ -64,20 +64,42 @@
         <script src="assets/closeLobbyUI.js"></script>
         <script src="assets/buttons.js"></script>
         <script>
-            function setLobby(id, gameMode, running, participants, button) {
-                var table = document.getElementById("lobbies");
-                var row = table.insertRow(0);
-                var idCell = row.insertCell(0);
-                var gamemodeCell = row.insertCell(1);
-                var runningCell = row.insertCell(2);
-                var participantsCell = row.insertCell(3);
-                var buttonCell = row.insertCell(4);
+            function updateLobby(id, gameMode, running, participants, button){
+                let lobbyRow = document.getElementById("lobby" + id);
 
-                idCell.innerHTML = id;
-                gamemodeCell.innerHTML = gameMode;
-                runningCell.innerHTML = running;
-                participantsCell.innerHTML = participants;
-                buttonCell.innerHTML = button;
+                // Create Lobby if not exists
+                if(lobbyRow === null){
+                    let table = document.getElementById("lobbies");
+                    let row = table.insertRow(0);
+                    let idCell = row.insertCell(0);
+                    let gamemodeCell = row.insertCell(1);
+                    let runningCell = row.insertCell(2);
+                    let participantsCell = row.insertCell(3);
+                    let buttonCell = row.insertCell(4);
+
+                    row.id = "lobby" + id;
+                    idCell.id = "id" + id;
+                    gamemodeCell.id = "gamemode" + id;
+                    runningCell.id = "running" + id;
+                    participantsCell.id = "participants" + id;
+                    buttonCell.id = "button" + id;
+
+                    idCell.innerHTML = id;
+                    gamemodeCell.innerHTML = gameMode;
+                    runningCell.innerHTML = running;
+                    participantsCell.innerHTML = participants;
+                    buttonCell.innerHTML = button;
+                } 
+                // update Lobby
+                else {
+                    let runningCell = document.getElementById("running" + id);
+                    let participantsCell = document.getElementById("participants" + id);
+                    let buttonCell = document.getElementById("button" + id);
+
+                    runningCell.innerHTML = running;
+                    participantsCell.innerHTML = participants;
+                    buttonCell.innerHTML = button;
+                }
             }
         </script>
     </body>
