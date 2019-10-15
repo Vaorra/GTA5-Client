@@ -225,6 +225,7 @@ function setSpeed() {
         rpm += .03; 
        }
           drawSpeedo(speed,gear,rpm,maxSpeed);
+          document.getElementById("speedo").innerHTML = speed + gear + rpm + maxSpeed;
 }
 
 
