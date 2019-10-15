@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+*{font-family: 'Nunito', sans-serif;transition: ease all 300ms;-webkit-transition: ease all 300ms;-moz-transition: ease all 300ms;-o-transition: ease all 300ms;}
+
+body{background: transparent;}
+
+#main{margin-top: 10%; background: white; max-height: 750px !important;}
+
+hr{width: 250px; height: 1px;}
+
+table {display: flex;flex-flow: column;max-height: 300px;width: 100%;}
+
+table thead {flex: 0 0 auto;width: calc(100% - 0.9em);}
+
+table tbody {flex: 1 1 auto;display: block;overflow-y: scroll;}
+
+table tbody tr {width: 100%;}
+
+table thead, table tbody tr {display: table;table-layout: fixed;}
+
+#closeLobbyUI{position: fixed;bottom: 77%;right: 21%;}
+
+.btn-nav{
+    width: 100px;
+}
+
+/*.btn-success:hover{background-color: #28a745 !important;}
+
+.btn-danger:hover{background-color: #dc3545 !important;}
+*/

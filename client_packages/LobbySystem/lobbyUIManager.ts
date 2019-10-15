@@ -58,7 +58,7 @@ mp.events.add("receiveLobbyVersions", (lobbyVersionEvent: [{lobbyId: number, lob
 mp.keys.bind(0x4C, true, () => {
     
     if(!mp.gui.cursor.visible){
-        lobbyUI = mp.browsers.new("package://websites/lobbyui/lobbyui.html");
+        lobbyUI = mp.browsers.new("package://LobbySystem/LobbyUI/lobbyui.html");
         mp.gui.cursor.show(true, true);
 
         updateInterval = setInterval(() => {
