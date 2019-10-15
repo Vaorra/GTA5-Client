@@ -8,10 +8,8 @@ body {
     -o-transition: ease all 300ms
   }
 
-  canvas {
-    margin: 0 auto;
-    display: block;
-    position: relative;
-    bottom: -50px;
-    right: -50px;
+  #speedMeter-Canvas {
+    position: fixed;
+    bottom:  50px;
+    right:  50px;
   }

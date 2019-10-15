@@ -18,12 +18,12 @@ let dev = false;
         ctx.scale(1,1);
 
         var speedGradient = ctx.createLinearGradient(0, 500, 0, 0);
-        speedGradient.addColorStop(0, '#00b8fe');
-        speedGradient.addColorStop(1, '#41dcf4');
+        speedGradient.addColorStop(0, '#45e4a3');
+        speedGradient.addColorStop(1, '#45e4a3');
 
         var rpmGradient = ctx.createLinearGradient(0, 500, 0, 0);
-        rpmGradient.addColorStop(0, '#f7b733');
-        rpmGradient.addColorStop(1, '#fc4a1a');
+        rpmGradient.addColorStop(0, '#aaa');
+        rpmGradient.addColorStop(1, '#aaa');
         //rpmGradient.addColorStop(1, '#EF4836');
 
         function speedNeedle(rotation) {
@@ -176,10 +176,10 @@ let dev = false;
             }
 
             ctx.beginPath();
-            ctx.strokeStyle = "#41dcf4";
+            ctx.strokeStyle = "#45e4a3";
             ctx.lineWidth = 25;
             ctx.shadowBlur = 20;
-            ctx.shadowColor = "#00c6ff";
+            ctx.shadowColor = "#45e4a3";
 
             ctx.strokeStyle = speedGradient;
             ctx.arc(250, 250, 228, .6 * Math.PI, calculateSpeedAngle(speed / topSpeed, 83.07888, 34.3775) * Math.PI);
@@ -188,14 +188,14 @@ let dev = false;
             ctx.lineWidth = 25;
             ctx.strokeStyle = rpmGradient;
             ctx.shadowBlur = 20;
-            ctx.shadowColor = "#f7b733";
+            ctx.shadowColor = "#aaa";
 
             ctx.arc(250, 250, 228, .4 * Math.PI, calculateRPMAngel(rpm / 4.7, 0, 22.9183) * Math.PI, true);
             ctx.stroke();
             ctx.shadowBlur = 0;
 
 
-            ctx.strokeStyle = '#41dcf4';
+            ctx.strokeStyle = '#45e4a3';
             speedNeedle(calculateSpeedAngle(speed / topSpeed, 83.07888, 34.3775) * Math.PI);
 
             ctx.strokeStyle = rpmGradient;
@@ -243,3 +243,4 @@ document.addEventListener('DOMContentLoaded', function() {
   setSpeed();
     //drawSpeedo(120,4,.8,160);
 }, false);
+
