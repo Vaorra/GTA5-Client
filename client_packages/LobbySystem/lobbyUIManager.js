@@ -56,7 +56,7 @@ mp.events.add("receiveLobbyVersions", function (lobbyVersionEvent) {
 });
 mp.keys.bind(0x4C, true, function () {
     if (!mp.gui.cursor.visible) {
-        lobbyUI = mp.browsers.new("package://websites/lobbyui/lobbyui.html");
+        lobbyUI = mp.browsers.new("package://LobbySystem/LobbyUI/lobbyui.html");
         mp.gui.cursor.show(true, true);
         updateInterval = setInterval(function () {
             mp.events.callRemote("requestPlayerData");
