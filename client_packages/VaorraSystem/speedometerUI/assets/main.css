@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+* {
+    background: transparent;
+    font-family: 'Nunito', sans-serif;
+    transition: ease all 300ms;
+    -webkit-transition: ease all 300ms;
+    -moz-transition: ease all 300ms;
+    -o-transition: ease all 300ms
+  }
+
+  canvas {
+    margin: 0 auto;
+    display: block;
+  }
