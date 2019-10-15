@@ -67,8 +67,12 @@ mp.keys.bind(0x4C, true, function () {
 mp.events.add("closeLobbyUI", function () {
     clearInterval(updateInterval);
     setTimeout(function () {
-        mp.browsers.at(0).destroy();
-        mp.gui.cursor.show(false, false);
+        mp.browsers.forEach(function (browser) {
+            if (browser.url === "package://LobbySystem/LobbyUI/lobbyui.html") {
+                browser.destroy();
+                mp.gui.cursor.show(false, false);
+            }
+        });
         lobbyVersions = {};
     }, 250);
 });
