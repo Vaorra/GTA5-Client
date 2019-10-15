@@ -1,0 +1,6 @@
+
+mp.events.add("spectetPlayer", (target) => {
+    let cam = mp.cameras.new('values go here') // example, cam gets created
+    cam.attachTo(target.handle, 10.0, 0.0, 10.0, true); 
+	cam.setActive(true);
+});

@@ -19,6 +19,5 @@
   "devDependencies": {
     "@types/ragemp-c": "github:CocaColaBear/types-ragemp-c#master"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
