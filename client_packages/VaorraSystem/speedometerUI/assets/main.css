@@ -11,4 +11,7 @@ body {
   canvas {
     margin: 0 auto;
     display: block;
+    position: relative;
+    bottom: -50px;
+    right: -50px;
   }
