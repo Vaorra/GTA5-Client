@@ -8,7 +8,7 @@ let dev = false;
 //let t0 = 0;
 //let t1 = 0;
 
-     var c = document.getElementById("speedMeter-Canvas");
+     var c = document.getElementById("speedoMeter-Canvas");
         c.width = 500;
         c.height = 500;
 
@@ -204,37 +204,39 @@ let dev = false;
             ctx.strokeStyle = "#000";
         }
 
-        function setSpeed() {
+        function setSpeed(localVehicle, maxSpeedVehicle) {
             let speed = 0;
             let gear = 0;
             let rpm = 0;
             let maxSpeed = 0;
 
-            let vehicle = mp.players.local.vehicle
-            let speed = vehicle.getSpeed();
+            
+            let speed = localVehicle.getSpeed();
             
             speed = Math.ceil(speed * (speed / 20) * 2); // Transform the speed into KM/H
             
-            let gear = vehicle.gear;
+            let gear = localVehicle.gear;
 
-            let rpm = vehicle.rpm;
+            let rpm = localVehicle.rpm;
 
-            let maxSpeed = 50 + (mp.game.vehicle.getVehicleModelMaxSpeed(mp.players.local.vehicle.model));
+            let maxSpeed = 50 + maxSpeedVehicle;
 
             if (rpm < 1){
                 rpm += .03; 
             }
             drawSpeedo(speed,gear,rpm,maxSpeed);
             mp.gui.chat.push(speed + gear + rpm + maxSpeed);
+            document.getElementById("speedo").innerHTML = speed + gear + rpm + maxSpeed;
         }
 
 
         document.addEventListener('DOMContentLoaded', function() {
-
+            localVehicle = mp.trigger('getPlayerVehicleData');
+            maxSpeedVehicle = mp.trigger('getMaxSpeedofVehicel');
+            document.getElementById("speedo").innerHTML ="spasst";
             //setInterval(setSpeed, 2000)
             //renderCanvas();
-        setSpeed();
-        mp.gui.chat.push("dullie ist setspeed");
+            setSpeed(localVehicle, gameVehicle);
             //drawSpeedo(120,4,.8,160);
         }, false);
 
