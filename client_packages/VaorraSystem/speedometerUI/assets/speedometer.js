@@ -204,37 +204,29 @@ let dev = false;
             ctx.strokeStyle = "#000";
         }
 
+function setSpeed() {
+    let speed = 0;
+    let gear = 0;
+    let rpm = 0;
+    let maxSpeed = 0;
 
-function setSpeed () {
-  let speedM = 0;
-  let gear = 0;
-  let rpm = 0;
-   setInterval(function(){
-     if (speedM > 160){
-        speedM = 0;
-        rpm = 0;
-      }
-     if (speedM > 1 && speedM< 30){
-       gear = 1;
-     } else if (speedM > 30 && speedM < 50) {
-       gear = 2;
-          } else if (speedM > 50 &&   speedM < 70) {
-       gear = 3;
-     } else if (speedM > 70 &&   speedM < 100)      {
-       gear = 4;
-          } else if (speedM > 100)      {
-       gear = 5;
-     }
-     
-     speedM++;
-     if (rpm < 1){
-      rpm += .03; 
-     }
-        drawSpeedo(speedM,gear,rpm,160);
+    let vehicle = mp.players.local.vehicle
+    let speed = vehicle.getSpeed();
+    
+    speed = Math.ceil(speed * (speed / 20) * 2); // Transform the speed into KM/H
+    
+    let gear = vehicle.gear;
 
-   }, 40);
-  
+    let rpm = vehicle.rpm;
+
+    let maxSpeed = 50 + (mp.game.vehicle.getVehicleModelMaxSpeed(mp.players.local.vehicle.model));
+
+    if (rpm < 1){
+        rpm += .03; 
+       }
+          drawSpeedo(speed,gear,rpm,maxSpeed);
 }
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
