@@ -204,27 +204,46 @@ let dev = false;
             ctx.strokeStyle = "#000";
         }
 
-        function setSpeed(speed, gear, rpm, maxSpeedVehicle) {
-                
-                let Cspeed = speed * 3.6; // Transform the speed into KM/H
 
-                let max = maxSpeedVehicle * 3.6;
+function setSpeed () {
+  let speedM = 0;
+  let gear = 0;
+  let rpm = 0;
+   setInterval(function(){
+     if (speedM > 160){
+        speedM = 0;
+        rpm = 0;
+      }
+     if (speedM > 1 && speedM< 30){
+       gear = 1;
+     } else if (speedM > 30 && speedM < 50) {
+       gear = 2;
+          } else if (speedM > 50 &&   speedM < 70) {
+       gear = 3;
+     } else if (speedM > 70 &&   speedM < 100)      {
+       gear = 4;
+          } else if (speedM > 100)      {
+       gear = 5;
+     }
+     
+     speedM++;
+     if (rpm < 1){
+      rpm += .03; 
+     }
+        console.log("speed:" + speedM)
+        console.log(gear)
+        console.log(rpm)
+        drawSpeedo(speedM,gear,rpm,160);
+    
+   }, 40);
+  
+}
 
-                if (rpm < 1){
-                    rpm += .03; 
-                }
-                drawSpeedo(Cspeed,gear,rpm,max);
-        } 
+document.addEventListener('DOMContentLoaded', function() {
 
+    //setInterval(setSpeed, 2000)
+    //renderCanvas();
+  setSpeed();
+    //drawSpeedo(120,4,.8,160);
+}, false);
 
-        document.addEventListener('DOMContentLoaded', function() {
-            mp.trigger('updateVehicleData');
-            document.getElementById("speedo").innerHTML = "spasst";
-            //setInterval(setSpeed, 2000)
-            //renderCanvas();
-            //setSpeed(localVehicle, gameVehicle);
-            //drawSpeedo(120,4,.8,160);
-
-        }, false);
-
- 

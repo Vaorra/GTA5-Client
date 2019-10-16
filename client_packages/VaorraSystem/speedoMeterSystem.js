@@ -19,7 +19,7 @@ mp.events.add("playerLeaveVehicle", function () {
 mp.events.add("updateVehicleData", function () {
     setInterval(function () {
         var vehicle = mp.players.local.vehicle;
-        var max = mp.game.vehicle.getVehicleModelMaxSpeed(mp.players.local.vehicle.model);
+        var max = mp.game.vehicle.getVehicleModelMaxSpeed(vehicle.model);
         speedometerUI.execute("setSpeed('" + vehicle.getSpeed() + "', '" + vehicle.gear + "', '" + vehicle.rpm + "', '" + max + "');");
         mp.gui.chat.push(JSON.stringify("Gear:" + vehicle.gear));
         mp.gui.chat.push(JSON.stringify("RPM:" + vehicle.rpm));

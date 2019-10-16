@@ -26,7 +26,7 @@ function playerEnterVehicleHandler(vehicle:any, seat:any) {
 mp.events.add("updateVehicleData", () => {
     setInterval(function() {
         let vehicle = mp.players.local.vehicle;
-        let max = mp.game.vehicle.getVehicleModelMaxSpeed(mp.players.local.vehicle.model);
+        let max = mp.game.vehicle.getVehicleModelMaxSpeed(vehicle.model);
         
         
         speedometerUI.execute(`setSpeed('${vehicle.getSpeed()}', '${vehicle.gear}', '${vehicle.rpm}', '${max}');`);
