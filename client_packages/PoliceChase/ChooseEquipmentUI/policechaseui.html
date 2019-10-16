@@ -32,111 +32,151 @@
                 <div class="col-6">
                     <h3 class="text-center">available equipment</h3>
 
-                    <div>
+                    <div class="row mb-3">
+                        <div class="col-4 text-center">
+                            <a class="btn btn-primary" data-toggle="collapse" href="#weapons" role="button" aria-expanded="true" aria-controls="weapons">Weapons</a>
+                        </div>
+                        <div class="col-4 text-center">
+                            <a class="btn btn-primary" data-toggle="collapse" href="#vehicles" role="button" aria-expanded="true" aria-controls="vehicles">Vehicles</a>
+                        </div>
+                        <div class="col-4 text-center">
+                            <a class="btn btn-primary" data-toggle="collapse" href="#profiles" role="button" aria-expanded="true" aria-controls="profiles">Profiles</a>
+                        </div>
                     </div>
 
-                    <div class="row" id="list">
-                        <div class="col-4">
-                            <div class="card mb-4">
-                                <img src="assets/policeknife.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Knife</h5>
+                    <div class="collapse" id="weapons">
+                        <div class="row">
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_switchblade">
+                                <div class="card">
+                                    <img src="assets/policeknife.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Knife</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="card">
-                                <img src="assets/nightstick.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Nightstick</h5>
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_nightstick">
+                                <div class="card">
+                                    <img src="assets/nightstick.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Nightstick</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="card">
-                                <img src="assets/stungun.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Taser</h5>
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_stungun">
+                                <div class="card">
+                                    <img src="assets/stungun.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Taser</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="card">
-                                <img src="assets/pistol.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Pistol</h5>
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_pistol">
+                                <div class="card">
+                                    <img src="assets/pistol.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Pistol</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="card">
-                                <img src="assets/revolver.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Revolver</h5>
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_revolver">
+                                <div class="card">
+                                    <img src="assets/revolver.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Revolver</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="card">
-                                <img src="assets/microsmg.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Microsmg</h5>
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_microsmg">
+                                <div class="card">
+                                    <img src="assets/microsmg.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Microsmg</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="card">
-                                <img src="assets/smg.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">SMG</h5>
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_smg">
+                                <div class="card">
+                                    <img src="assets/smg.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">SMG</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="card">
-                                <img src="assets/pwd.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">PWD</h5>
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_combatpdw">
+                                <div class="card">
+                                    <img src="assets/pwd.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">PWD</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="card">
-                                <img src="assets/sawedoffshotgun.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Sawd off Shotgun</h5>
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_sawnoffshotgun">
+                                <div class="card">
+                                    <img src="assets/sawedoffshotgun.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Sawd off Shotgun</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="card">
-                                <img src="assets/pumpshotgun.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Pumpshotgun</h5>
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_pumpshotgun">
+                                <div class="card">
+                                    <img src="assets/pumpshotgun.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Pumpshotgun</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="card">
-                                <img src="assets/bzgas.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Bzgas</h5>
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_bzgas">
+                                <div class="card">
+                                    <img src="assets/bzgas.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">BZ Gas</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="card">
-                                <img src="assets/fuel.png" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Fuel</h5>
+                            <div class="col-4 mb-4" onclick="equip(this)" id="weapon_petrolcan">
+                                <div class="card">
+                                    <img src="assets/fuel.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Fuel</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="collapse" id="vehicles">
+                        <div class="row">
+                            <div class="col-4 mb-4" onclick="equip(this)" id="police">
+                                <div class="card">
+                                    <img src="assets/police.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Police</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="profiles">
+                        <div class="row">
+                            <div class="col-4 mb-4" onclick="equip(this)" id="police">
+                                <div class="card">
+                                    <img src="assets/police.png" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">Police</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
                 <div class="col-6">
                     <h3 class="text-center">choosen equipment</h3>
-
+                    <div class="row" id="choosenequipment">
+                    </div>
                 </div>
             </div>
 
@@ -147,8 +187,19 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
         <script>
-            
-            function test(){
+            let equipment = [];
+
+            function equip(object){
+                let item = document.querySelector("#choosenequipment #" + object.id);
+
+                if(item === null){
+                    $('#'+object.id).clone().appendTo('#choosenequipment');
+                    equipment.push(object.id);
+                } else {
+                    let equipmentItem = equipment.indexOf(object.id);
+                    equipment.splice(equipmentItem.index, 1);
+                    item.remove();
+                }
                 
             }
 
