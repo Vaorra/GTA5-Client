@@ -15,13 +15,15 @@ mp.events.add("playerLeaveDriverSeat", function () {
                 browser.destroy();
             }
         });
-    }, 250);
+    }, 500);
 });
 mp.events.add("updateVehicleData", function () {
     updateIntervalSpeedo = setInterval(function () {
         var vehicle = mp.players.local.vehicle;
         var max = mp.game.vehicle.getVehicleModelMaxSpeed(vehicle.model);
-        speedometerUI.execute("setSpeed('" + vehicle.getSpeed() + "', '" + vehicle.gear + "', '" + vehicle.rpm + "', '" + max + "');");
+        if (vehicle) {
+            speedometerUI.execute("setSpeed('" + vehicle.getSpeed() + "', '" + vehicle.gear + "', '" + vehicle.rpm + "', '" + max + "');");
+        }
         mp.gui.chat.push(JSON.stringify("Gear:" + vehicle.gear));
         mp.gui.chat.push(JSON.stringify("RPM:" + vehicle.rpm));
         mp.gui.chat.push(JSON.stringify("CSpeed:" + vehicle.getSpeed()));
