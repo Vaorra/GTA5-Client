@@ -204,46 +204,33 @@ let dev = false;
             ctx.strokeStyle = "#000";
         }
 
-        function setSpeed(localVehicle, maxSpeedVehicle) {
-            let speed = 0;
-            let gear = 0;
-            let rpm = 0;
-            let maxSpeed = 0;
+        function setSpeed(speed, gear, rpm, maxSpeedVehicle) {
 
             setInterval(function() {
 
-            
-                let speed = localVehicle.getSpeed();
                 
-                speed = Math.ceil(speed * (speed / 20) * 2); // Transform the speed into KM/H
-                
-                let gear = localVehicle.gear;
-
-                let rpm = localVehicle.rpm;
+                Cspeed = Math.ceil(speed * (speed / 20) * 2); // Transform the speed into KM/H
 
                 let maxSpeed = 50 + maxSpeedVehicle;
+
+                let max = Math.ceil(maxSpeed * (maxSpeed / 20) * 2);
 
                 if (rpm < 1){
                     rpm += .03; 
                 }
-                drawSpeedo(speed,gear,rpm,maxSpeed);
-                mp.gui.chat.push(speed + gear + rpm + maxSpeed);
-
-
-                document.getElementById("speedo").innerHTML = speed + gear + rpm + maxSpeed;
+                drawSpeedo(Cspeed,gear,rpm,maxSpeed);
 
             }, 40);
         } 
 
 
         document.addEventListener('DOMContentLoaded', function() {
-            localVehicle = mp.trigger('getPlayerVehicleData');
-            maxSpeedVehicle = mp.trigger('getMaxSpeedofVehicel');
-            document.getElementById("localVehicle").innerHTML = localVehicle;
+            mp.trigger('updateVehicleData');
             document.getElementById("speedo").innerHTML = "spasst";
             //setInterval(setSpeed, 2000)
             //renderCanvas();
             //setSpeed(localVehicle, gameVehicle);
             //drawSpeedo(120,4,.8,160);
+
         }, false);
 
