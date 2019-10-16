@@ -210,33 +210,40 @@ let dev = false;
             let rpm = 0;
             let maxSpeed = 0;
 
-            
-            let speed = localVehicle.getSpeed();
-            
-            speed = Math.ceil(speed * (speed / 20) * 2); // Transform the speed into KM/H
-            
-            let gear = localVehicle.gear;
+            setInterval(function() {
 
-            let rpm = localVehicle.rpm;
+            
+                let speed = localVehicle.getSpeed();
+                
+                speed = Math.ceil(speed * (speed / 20) * 2); // Transform the speed into KM/H
+                
+                let gear = localVehicle.gear;
 
-            let maxSpeed = 50 + maxSpeedVehicle;
+                let rpm = localVehicle.rpm;
 
-            if (rpm < 1){
-                rpm += .03; 
-            }
-            drawSpeedo(speed,gear,rpm,maxSpeed);
-            mp.gui.chat.push(speed + gear + rpm + maxSpeed);
-            document.getElementById("speedo").innerHTML = speed + gear + rpm + maxSpeed;
-        }
+                let maxSpeed = 50 + maxSpeedVehicle;
+
+                if (rpm < 1){
+                    rpm += .03; 
+                }
+                drawSpeedo(speed,gear,rpm,maxSpeed);
+                mp.gui.chat.push(speed + gear + rpm + maxSpeed);
+
+
+                document.getElementById("speedo").innerHTML = speed + gear + rpm + maxSpeed;
+
+            }, 40);
+        } 
 
 
         document.addEventListener('DOMContentLoaded', function() {
             localVehicle = mp.trigger('getPlayerVehicleData');
             maxSpeedVehicle = mp.trigger('getMaxSpeedofVehicel');
-            document.getElementById("speedo").innerHTML ="spasst";
+            document.getElementById("localVehicle").innerHTML = localVehicle;
+            document.getElementById("speedo").innerHTML = "spasst";
             //setInterval(setSpeed, 2000)
             //renderCanvas();
-            setSpeed(localVehicle, gameVehicle);
+            //setSpeed(localVehicle, gameVehicle);
             //drawSpeedo(120,4,.8,160);
         }, false);
 
