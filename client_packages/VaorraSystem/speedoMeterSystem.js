@@ -11,8 +11,9 @@ mp.events.add("playerLeaveDriverSeat", function () {
     setTimeout(function () {
         mp.gui.chat.push("Player start leave the vehicle");
         mp.browsers.forEach(function (browser) {
-            if (browser.url === speedoMeterHTML)
+            if (browser.url === speedoMeterHTML) {
                 browser.destroy();
+            }
         });
     }, 250);
 });
