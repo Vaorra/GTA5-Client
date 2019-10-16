@@ -1,23 +1,23 @@
 "use strict";
 var speedoMeterHTML = "package://VaorraSystem/speedometerUI/speedometerUI.html";
 var speedometerUI = null;
-function playerEnterVehicleHandler(vehicle, seat) {
+var updateIntervalSpeedo = null;
+mp.events.add("playerIsOnDriverSeat", function () {
+    mp.gui.chat.push('You got into the car, driver seat');
+    speedometerUI = mp.browsers.new(speedoMeterHTML);
+});
+mp.events.add("playerLeaveDriverSeat", function () {
+    clearInterval(updateIntervalSpeedo);
     setTimeout(function () {
-        if (seat === 0)
-            mp.gui.chat.push("You got into the car, driver seat" + seat);
-        speedometerUI = mp.browsers.new(speedoMeterHTML);
-    }, 5000);
-}
-mp.events.add("playerEnterVehicle", playerEnterVehicleHandler);
-mp.events.add("playerLeaveVehicle", function () {
-    mp.gui.chat.push("Player start leave the vehicle");
-    mp.browsers.forEach(function (browser) {
-        if (browser.url === speedoMeterHTML)
-            browser.destroy();
-    });
+        mp.gui.chat.push("Player start leave the vehicle");
+        mp.browsers.forEach(function (browser) {
+            if (browser.url === speedoMeterHTML)
+                browser.destroy();
+        });
+    }, 250);
 });
 mp.events.add("updateVehicleData", function () {
-    setInterval(function () {
+    updateIntervalSpeedo = setInterval(function () {
         var vehicle = mp.players.local.vehicle;
         var max = mp.game.vehicle.getVehicleModelMaxSpeed(vehicle.model);
         speedometerUI.execute("setSpeed('" + vehicle.getSpeed() + "', '" + vehicle.gear + "', '" + vehicle.rpm + "', '" + max + "');");

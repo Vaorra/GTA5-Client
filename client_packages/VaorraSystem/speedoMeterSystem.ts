@@ -1,30 +1,27 @@
 let speedoMeterHTML = "package://VaorraSystem/speedometerUI/speedometerUI.html";
 let speedometerUI:any = null;
+let updateIntervalSpeedo:any = null;
 
 
-function playerEnterVehicleHandler(vehicle:any, seat:any) {
-    setTimeout(() => {
-        if (seat === 0) 
-            mp.gui.chat.push(`You got into the car, driver seat` + seat);
-            speedometerUI = mp.browsers.new(speedoMeterHTML);
-    }, 5000);
- }
+mp.events.add("playerIsOnDriverSeat", () => {
+    mp.gui.chat.push('You got into the car, driver seat');
+    speedometerUI = mp.browsers.new(speedoMeterHTML);
+});
  
- mp.events.add("playerEnterVehicle", playerEnterVehicleHandler);
+ mp.events.add("playerLeaveDriverSeat", () => {
+    clearInterval(updateIntervalSpeedo);
+    setTimeout(() => {
+        mp.gui.chat.push("Player start leave the vehicle");
 
-
-
- mp.events.add("playerLeaveVehicle", () => {
-    mp.gui.chat.push("Player start leave the vehicle");
-
-    mp.browsers.forEach(browser => {
-        if (browser.url === speedoMeterHTML)
-            browser.destroy();
-    });
+        mp.browsers.forEach(browser => {
+            if (browser.url === speedoMeterHTML)
+                browser.destroy();
+        });
+    }, 250)
 })
 
 mp.events.add("updateVehicleData", () => {
-    setInterval(function() {
+    updateIntervalSpeedo = setInterval(() => {
         let vehicle = mp.players.local.vehicle;
         let max = mp.game.vehicle.getVehicleModelMaxSpeed(vehicle.model);
         

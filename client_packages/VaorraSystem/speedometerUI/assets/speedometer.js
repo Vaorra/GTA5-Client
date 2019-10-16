@@ -116,8 +116,8 @@ let dev = false;
             ctx.textAlign = "center";
             ctx.fillText(speed, 250, 220);
 
-            ctx.font = "700 15px Open Sans";
-            ctx.fillText("mph", 250, 235);
+            ctx.font = "700 15px Open Swwans";
+            ctx.fillText("km/h", 250, 235);
 
             if (gear == 0 && speed > 0) {
                 ctx.fillStyle = "#999";
@@ -208,7 +208,7 @@ let dev = false;
                 
                 let Cspeed = speed * 3.6; // Transform the speed into KM/H
 
-                let max = maxSpeedVehicle * 3.6;
+                let max = 70 + (maxSpeedVehicle * 3.6);
 
                 if (rpm < 1){
                     rpm += .03; 
