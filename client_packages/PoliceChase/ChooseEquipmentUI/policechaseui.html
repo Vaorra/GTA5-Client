@@ -17,12 +17,14 @@
         <div class="container" id="main">
 
             <!-- title -->
-            <div class="d-flex justify-content-center">
-                <div>
-                    <img src="assets/wordmark.svg" height="50px">
-                </div>
-                <div class="align-self-center">
-                    <h1 class="m-0">PoliceChase UI</h1>
+            <div class="">
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <img src="assets/wordmark.svg" height="50px">
+                    </div>
+                    <div class="align-self-center">
+                        <h1 class="m-0">PoliceChase UI</h1>
+                    </div>
                 </div>
             </div>
 
@@ -34,17 +36,17 @@
 
                     <div class="row mb-3">
                         <div class="col-4 text-center">
-                            <a class="btn btn-primary" data-toggle="collapse" href="#weapons" role="button" aria-expanded="true" aria-controls="weapons">Weapons</a>
+                            <a class="btn btn-primary" id="weaponsButton" data-toggle="collapse" href="#weapons" role="button" aria-expanded="true" aria-controls="weapons">Weapons</a>
                         </div>
                         <div class="col-4 text-center">
-                            <a class="btn btn-primary" data-toggle="collapse" href="#vehicles" role="button" aria-expanded="true" aria-controls="vehicles">Vehicles</a>
+                            <a class="btn btn-primary" id="vehiclesButton" data-toggle="collapse" href="#vehicles" role="button" aria-expanded="false" aria-controls="vehicles">Vehicles</a>
                         </div>
                         <div class="col-4 text-center">
-                            <a class="btn btn-primary" data-toggle="collapse" href="#profiles" role="button" aria-expanded="true" aria-controls="profiles">Profiles</a>
+                            <a class="btn btn-primary" id="profilesButton" data-toggle="collapse" href="#profiles" role="button" aria-expanded="false" aria-controls="profiles">Profiles</a>
                         </div>
                     </div>
 
-                    <div class="collapse" id="weapons">
+                    <div class="collapse show" id="weapons" data-parent="#main">
                         <div class="row">
                             <div class="col-4 mb-4" onclick="equip(this)" id="weapon_switchblade">
                                 <div class="card">
@@ -145,7 +147,7 @@
                         </div>
                     </div>
 
-                    <div class="collapse" id="vehicles">
+                    <div class="collapse" id="vehicles" data-parent="#main">
                         <div class="row">
                             <div class="col-4 mb-4" onclick="equip(this)" id="police">
                                 <div class="card">
@@ -158,15 +160,10 @@
                         </div>
                     </div>
 
-                    <div class="collapse" id="profiles">
+                    <div class="collapse" id="profiles" data-parent="#main">
                         <div class="row">
-                            <div class="col-4 mb-4" onclick="equip(this)" id="police">
-                                <div class="card">
-                                    <img src="assets/police.png" class="card-img-top">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-center">Police</h5>
-                                    </div>
-                                </div>
+                            <div class="col" >
+                                <h3 class="text-center">coming soon</h3>
                             </div>
                         </div>
                     </div>
@@ -190,15 +187,18 @@
             let equipment = [];
 
             function equip(object){
-                let item = document.querySelector("#choosenequipment #" + object.id);
+                let item = document.querySelector("#choosenequipment #" + object.id);   
 
+                console.log(equipment);
                 if(item === null){
                     $('#'+object.id).clone().appendTo('#choosenequipment');
                     equipment.push(object.id);
+                    console.log(equipment);
                 } else {
                     let equipmentItem = equipment.indexOf(object.id);
                     equipment.splice(equipmentItem.index, 1);
                     item.remove();
+                    console.log(equipment);
                 }
                 
             }

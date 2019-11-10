@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 body {
-    background: transparent;
-    font-family: 'Nunito', sans-serif;
-    transition: ease all 300ms;
-    -webkit-transition: ease all 300ms;
-    -moz-transition: ease all 300ms;
-    -o-transition: ease all 300ms
-  }
+  background: transparent;
+  font-family: 'Nunito', sans-serif;
+  transition: ease all 300ms;
+  -webkit-transition: ease all 300ms;
+  -moz-transition: ease all 300ms;
+  -o-transition: ease all 300ms
+}
 
-  #speedoMeter-Canvas {
-    position: fixed;
-    bottom:  50px;
-    right:  50px;
-  }
+#speedoMeter-Canvas {
+  position: fixed;
+  bottom:  50px;
+  right:  50px;
+}
