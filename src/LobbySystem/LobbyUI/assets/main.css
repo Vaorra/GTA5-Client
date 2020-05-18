@@ -22,7 +22,7 @@ table tbody tr {width: 100%;}
 
 table thead, table tbody tr {display: table;table-layout: fixed;}
 
-#closeLobbyUI{position: fixed;bottom: 77%;right: 21%;}
+#closeLobbyUI{position: absolute; top: -77px;right: 28px;}
 
 /*.btn-success:hover{background-color: #28a745 !important;}
 
