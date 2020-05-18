@@ -1,6 +1,0 @@
-{
-    "files.exclude": {
-        "**/*.js": {"when": "$(basename).ts"}
-    },
-    "explorer.openEditors.visible": 1
-}
