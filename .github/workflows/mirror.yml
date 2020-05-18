@@ -1,0 +1,21 @@
+name: GitHub GitLab Mirror
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: GitHub GitLab Mirror
+      uses: https://git.neture.ch/neture-public/github-gitlab-mirror
+      with:
+        args: "https://git.neture.ch/SVC_GitHub_Actions/NGINX-CheatSheet"
+      env:
+        GITLAB_HOSTNAME: "git.neture.ch"
+        GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
+        GITLAB_PASSWORD: ${{ secrets.GITLAB_PASSWORD }}
+        GITLAB_PROJECT_ID: "16"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
