@@ -8,7 +8,7 @@ LobbyUI
 
 body{background: transparent;}
 
-#main{margin-top: 10%; background: white;}
+#main{margin-top: 10%; background: white; padding: 0;}
 
 hr{width: 250px; height: 1px;}
 
