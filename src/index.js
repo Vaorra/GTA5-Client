@@ -1,4 +1,4 @@
-require("./LobbySystem");
-require("./AdminTools");
-require("./VaorraSystem");
-require("./nativeui");
+require('./LobbySystem');
+require('./AdminTools');
+require('./VaorraSystem');
+require('./nativeui');
