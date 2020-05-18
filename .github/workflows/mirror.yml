@@ -12,7 +12,7 @@ jobs:
     - name: GitHub GitLab Mirror
       uses: neture/GitHub-GitLab-Mirror@master
       with:
-        args: "https://git.neture.ch/SVC_GitHub_Actions/NGINX-CheatSheet"
+        args: "https://git.neture.ch/vaorra/ragemp-client"
       env:
         GITLAB_HOSTNAME: "git.neture.ch"
         GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
