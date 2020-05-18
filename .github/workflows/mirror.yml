@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: GitHub GitLab Mirror
-      uses: https://git.neture.ch/neture-public/github-gitlab-mirror
+      uses: neture/GitHub-GitLab-Mirror@master
       with:
         args: "https://git.neture.ch/SVC_GitHub_Actions/NGINX-CheatSheet"
       env:
